@@ -3,13 +3,21 @@ $(document).ready(function(){
 // Set up variables 
 // ==============================================
 var queryTerm = "";
+var city = "philadelphia";
 var auKeys = "741723edae656a0451e3776abc421da5";
 var iconElement = document.querySelector(".weather-icon");
 var tempElement = document.querySelector(".temperature-value p");
 var descElement = document.querySelector(".temperature-description p");
 var locationElement = document.querySelector(".location p");
 var notificationElement = document.querySelector(".notification");
-var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + "&apikey=" + auKeys;
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",US&apikey=" + auKeys;
+
+$.ajax({
+    url: queryURL,
+    cors: true
+}).then(data => {
+    console.log(data)
+})
 
 var weather = {};
 
@@ -45,7 +53,7 @@ function celsiusToFahrenheit(temperature){
 }
 
 if(weather.temperature.unit == "celsius"){
-    let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+    var fahrenheit = celsiusToFahrenheit(weather.temperature.value);
     fahrenheit = Math.floor(fahrenheit);
     
     tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
