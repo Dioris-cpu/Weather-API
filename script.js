@@ -14,9 +14,22 @@ $.ajax({
     console.log(data)
 })
 
+
+
+function cityInfo () {
+    $("#citySearch").val(localStorage.getItem("forcast"));
+
+}
+
+
+
+
 $("#searchBtn").click(function(){
-    alert("This Homwork is not easy bro.");
+    var value = $(this).siblings("#citySearch").val();
+    localStorage.setItem(value, cities)
   });
+
+  cityInfo()
   
 
 

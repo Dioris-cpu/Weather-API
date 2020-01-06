@@ -43,5 +43,6 @@ body {
 
 .temp {
   font-size: small;
+  display: grid;
 }
 
