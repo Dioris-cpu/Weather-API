@@ -41,7 +41,7 @@ body {
     height: 47px;
 }
 
-.temp {
+.temp, .humidity, .date {
   font-size: small;
   display: grid;
 }
